@@ -21,9 +21,15 @@ int main()
 
   bind(s, (struct sockaddr *)&server, sizeof(server));
 
+  
+
   listen(s, 5);
 
+  printf("waitin for connection");
+
   c = accept(s, (struct sockaddr *)&client, &n);
+
+  printf("connected");
 
   while(1)
     {
