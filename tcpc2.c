@@ -5,24 +5,21 @@
 #include <string.h>
 #include <arpa/inet.h>
 
-// Removed the semicolon so it works inside htons()
 #define port 8080 
 
 int main() {
     int readbytes;
-    int c; // Client socket
+    int c; 
     struct sockaddr_in server;
     char buff[1024];
 
     c = socket(AF_INET, SOCK_STREAM, 0);
 
-    // Configuration using server code variable names
     server.sin_family = AF_INET;
     server.sin_addr.s_addr = inet_addr("127.0.0.1");
     server.sin_port = htons(port);
 
     if (connect(c, (struct sockaddr*)&server, sizeof(server)) < 0) {
-        printf("Connection failed\n");
         return 1;
     }
     
